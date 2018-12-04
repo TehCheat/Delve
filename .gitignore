@@ -1,0 +1,88 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# VS folders
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+.vs*/
+[Pp]ackages*/
+
+# Custom
+config.ini
+%PluginUpdate%
+Delve.dll.config
+Delve.pdb
+ErrorLog.txt
+Antlr4.Runtime.xml
+System.Numerics.Vectors.dll
+System.Buffers.xml
+System.Buffers.dll
+SharpDX.xml
+SharpDX.Direct3D9.dll
+SharpDX.Desktop.xml
+SharpDX.Desktop.dll
+PoeHUD.exe.config
+PoeHUD.exe
+PoeFilterParser.dll
+Newtonsoft.Json.xml
+Antlr4.Runtime.dll
+Trinet.Core.IO.Ntfs.xml
+SharpDX.Mathematics.xml
+SharpDX.Mathematics.dll
+PoeHUD.pdb
+Newtonsoft.Json.dll
+ImGui.NET.xml
+ImGui.NET.dll
+Trinet.Core.IO.Ntfs.dll
+System.Runtime.CompilerServices.Unsafe.xml
+System.Runtime.CompilerServices.Unsafe.dll
+System.Numerics.Vectors.xml
+SharpDX.dll
+SharpDX.Direct3D9.xml
+Gma.System.MouseKeyHook.dll
