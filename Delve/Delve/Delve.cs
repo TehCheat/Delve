@@ -120,7 +120,7 @@ namespace Delve
 		private void DelveMapNodes()
 		{
 			if (!Settings.DelveGridMap) return;
-			var delveMap = GameController.Game.IngameState.UIRoot.Children[1].Children[57];
+			var delveMap = GameController.Game.IngameState.UIRoot.Children[1].Children[59];
 			if (!delveMap.IsVisible) return;
 			try
 			{
