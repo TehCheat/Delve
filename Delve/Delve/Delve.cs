@@ -89,7 +89,13 @@ namespace Delve
 
 			var playerStats = GameController.Player.GetComponent<Stats>().StatDictionary;
 
-			var sc = playerStats[GameStat.DelveSulphiteCapacity];
+			int iDelveSulphiteCapacityID = GameController.Instance.Files.Stats.records["delve_sulphite_capacity"].ID;
+
+			if (!playerStats.ContainsKey(iDelveSulphiteCapacityID))
+			{
+				return;
+			}
+			var sc = playerStats[iDelveSulphiteCapacityID];
 
 			DrawData("Resources/Sulphite.png", GameController.Game.IngameState.ServerData.CurrentSulphiteAmount + "/" + sc);
 			DrawData("Resources/Azurite.png", GameController.Game.IngameState.ServerData.CurrentAzuriteAmount.ToString());
