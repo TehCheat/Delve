@@ -57,7 +57,7 @@ namespace Delve
 			if (ImGui.TreeNode("Delve Chests"))
 			{
 				ImGui.PushID(idPop);
-				Settings.DelveChests.Value = ImGuiExtension.Checkbox(Settings.DelvePathWays.Value ? "Show" : "Hidden", Settings.DelveChests);
+				Settings.DelveChests.Value = ImGuiExtension.Checkbox(Settings.DelveChests.Value ? "Show" : "Hidden", Settings.DelveChests);
 				ImGui.PopID();
 				idPop++;
 				ImGui.Spacing();
