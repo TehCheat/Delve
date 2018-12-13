@@ -349,7 +349,19 @@ namespace Delve
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize * 1.3f);
 					}
 
-					if (e.Path.EndsWith("FossilChest") && e.Path.StartsWith("Metadata/Chests/DelveChests"))
+                    if (e.Path.Contains("RandomEnchant") && e.Path.StartsWith("Metadata/Chests/DelveChests"))
+                    {
+                        return new MapIcon(e, new HudTexture(CustomImagePath + "//Enchant.png", Settings.DelveCurrencyChestColor),
+                            () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
+                    }
+
+                    if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("6Linked"))
+                    {
+                        return new MapIcon(e, new HudTexture(CustomImagePath + "//SixLink.png", Settings.DelveCurrencyChestColor),
+                            () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
+                    }
+
+                    if (e.Path.EndsWith("FossilChest") && e.Path.StartsWith("Metadata/Chests/DelveChests"))
 					{
 						foreach (var @string in FossilList.T1)
 						{
@@ -386,9 +398,6 @@ namespace Delve
 						return new MapIcon(e, new HudTexture(CustomImagePath + "//ResonatorT1.png", Settings.DelveResonatorChestColor),
 							() => Settings.DelveResonatorChest, Settings.DelveResonatorChestSize * 0.7f);
 					}
-
-
-					///////
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Map"))
 					{
