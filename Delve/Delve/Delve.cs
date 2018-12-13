@@ -261,73 +261,73 @@ namespace Delve
 				{
 					if (e.Path.Contains("Metadata/Chests/DelveChests/DelveMiningSuppliesDynamite"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Bombs.png", Settings.DelveMiningSuppliesDynamiteChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Bombs.png", Settings.DelveMiningSuppliesDynamiteChestColor),
 							() => Settings.DelveMiningSuppliesDynamiteChest, Settings.DelveMiningSuppliesDynamiteChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests/DelveMiningSuppliesFlares"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Flare.png", Settings.DelveMiningSuppliesFlaresChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Flare.png", Settings.DelveMiningSuppliesFlaresChestColor),
 							() => Settings.DelveMiningSuppliesFlaresChest, Settings.DelveMiningSuppliesFlaresChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("PathCurrency"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Currency.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Currency.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("DynamiteCurrency"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Currency.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Currency.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("AdditionalSockets"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//AdditionalSockets.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "AdditionalSockets.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("AtziriFragment"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Fragment.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Fragment.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("PaleCourtFragment"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//PaleCourtComplete.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "PaleCourtComplete.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Essence"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Essence.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Essence.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("SilverCoin"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//SilverCoin.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "SilverCoin.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("WisdomScroll"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//WisDomCurrency.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "WisDomCurrency.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Divination"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//divinationCard.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "divinationCard.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests/DelveChestCurrency"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Currency.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Currency.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
@@ -339,43 +339,43 @@ namespace Delve
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Resonator3") && e.Path.Contains("Resonator4") && e.Path.Contains("Resonator5"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//ResonatorT1.png", Settings.DelveResonatorChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "ResonatorT1.png", Settings.DelveResonatorChestColor),
 							() => Settings.DelveResonatorChest, Settings.DelveResonatorChestSize * 0.7f);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Resonator2"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//ResonatorT2.png", Settings.DelveResonatorChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "ResonatorT2.png", Settings.DelveResonatorChestColor),
 							() => Settings.DelveResonatorChest, Settings.DelveResonatorChestSize * 0.7f);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Resonator1"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//ResonatorT3.png", Settings.DelveResonatorChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "ResonatorT3.png", Settings.DelveResonatorChestColor),
 							() => Settings.DelveResonatorChest, Settings.DelveResonatorChestSize * 0.7f);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests/DelveChestArmourMovementSpeed"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//SpeedArmour.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "SpeedArmour.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests/DelveChestSpecialUniqueMana"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//UniqueManaFlask.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "UniqueManaFlask.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize * 1.3f);
 					}
 
                     if (e.Path.Contains("RandomEnchant") && e.Path.StartsWith("Metadata/Chests/DelveChests"))
                     {
-                        return new MapIcon(e, new HudTexture(CustomImagePath + "//Enchant.png", Settings.DelveCurrencyChestColor),
+                        return new MapIcon(e, new HudTexture(CustomImagePath + "Enchant.png", Settings.DelveCurrencyChestColor),
                             () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
                     }
 
                     if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("6Linked"))
                     {
-                        return new MapIcon(e, new HudTexture(CustomImagePath + "//SixLink.png", Settings.DelveCurrencyChestColor),
+                        return new MapIcon(e, new HudTexture(CustomImagePath + "SixLink.png", Settings.DelveCurrencyChestColor),
                             () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
                     }
 
@@ -385,7 +385,7 @@ namespace Delve
 						{
 							if (e.Path.ToLower().Contains(@string.ToLower()))
 							{
-								return new MapIcon(e, new HudTexture(CustomImagePath + "//AbberantFossilT1.png", Settings.DelveFossilChestColor),
+								return new MapIcon(e, new HudTexture(CustomImagePath + "AbberantFossilT1.png", Settings.DelveFossilChestColor),
 									() => Settings.DelveFossilChest, Settings.DelveFossilChestSize);
 							}
 						}
@@ -393,7 +393,7 @@ namespace Delve
 						{
 							if (e.Path.ToLower().Contains(@string.ToLower()))
 							{
-								return new MapIcon(e, new HudTexture(CustomImagePath + "//AbberantFossilT2.png", Settings.DelveFossilChestColor),
+								return new MapIcon(e, new HudTexture(CustomImagePath + "AbberantFossilT2.png", Settings.DelveFossilChestColor),
 									() => Settings.DelveFossilChest, Settings.DelveFossilChestSize);
 							}
 						}
@@ -401,31 +401,31 @@ namespace Delve
 						{
 							if (e.Path.ToLower().Contains(@string.ToLower()))
 							{
-								return new MapIcon(e, new HudTexture(CustomImagePath + "//AbberantFossilT3.png", Settings.DelveFossilChestColor),
+								return new MapIcon(e, new HudTexture(CustomImagePath + "AbberantFossilT3.png", Settings.DelveFossilChestColor),
 									() => Settings.DelveFossilChest, Settings.DelveFossilChestSize);
 							}
 						}
 
 
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//AbberantFossil.png", Settings.DelveFossilChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "AbberantFossil.png", Settings.DelveFossilChestColor),
 							() => Settings.DelveFossilChest, Settings.DelveFossilChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Resonator"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//ResonatorT1.png", Settings.DelveResonatorChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "ResonatorT1.png", Settings.DelveResonatorChestColor),
 							() => Settings.DelveResonatorChest, Settings.DelveResonatorChestSize * 0.7f);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Map"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Map.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Map.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
 					if (e.Path.Contains("Metadata/Chests/DelveChests") && e.Path.Contains("Corrupted"))
 					{
-						return new MapIcon(e, new HudTexture(CustomImagePath + "//Corrupted.png", Settings.DelveCurrencyChestColor),
+						return new MapIcon(e, new HudTexture(CustomImagePath + "Corrupted.png", Settings.DelveCurrencyChestColor),
 							() => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
 					}
 
