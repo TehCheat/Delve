@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using SharpDX;
 using SharpDX.Direct3D9;
 using PoeHUD.Controllers;
 using PoeHUD.Framework.Helpers;
 using PoeHUD.Hud;
 using PoeHUD.Models;
-using PoeHUD.Models.Enums;
 using PoeHUD.Plugins;
 using PoeHUD.Poe.Components;
 using PoeHUD.Poe.RemoteMemoryObjects;
@@ -52,9 +51,28 @@ namespace Delve
 			CustomImagePath = PluginDirectory + @"\Resources\";
 
 			GameController.Area.OnAreaChange += area => AreaChange();
-		}
 
-		private void AreaChange()
+            if (File.Exists($@"{PluginDirectory}\Fossil_Tiers.json"))
+            {
+                var jsonFile = File.ReadAllText($@"{PluginDirectory}\Fossil_Tiers.json");
+                FossilList = JsonConvert.DeserializeObject<FossilTiers>(jsonFile, JsonSettings);
+            }
+            else
+            {
+                LogError("Error loading Fossil_Tiers.json, Please re download from Random Features github repository", 10);
+            }
+        }
+
+        public static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
+        {
+            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
+            DateParseHandling = DateParseHandling.None,
+            Converters = {
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
+            },
+        };
+
+        private void AreaChange()
 		{
 			DelveEntities.Clear();
 		}
