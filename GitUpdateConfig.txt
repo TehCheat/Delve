@@ -1,0 +1,9 @@
+Owner: TehCheat
+Name: Delve
+Repository
+
+Ignore:
+Delve
+.gitignore
+LICENSE
+README.md
