@@ -44,7 +44,7 @@ namespace Delve
         public FossilTiers FossilList = new FossilTiers();
 		public LargeMapData LargeMapInformation { get; set; }
 
-		public override void Initialise()
+        public override void Initialise()
 		{
 			buildDate = new DateTime(2000, 1, 1).AddDays(version.Build).AddSeconds(version.Revision * 2);
 
@@ -55,7 +55,6 @@ namespace Delve
 			CustomImagePath = PluginDirectory + @"\Resources\";
 
 			GameController.Area.OnAreaChange += AreaChange;
-            AreaName = GameController.Area.CurrentArea.Name;
 
             if (File.Exists($@"{PluginDirectory}\Fossil_Tiers.json"))
             {
@@ -1120,7 +1119,9 @@ namespace Delve
             int width = 0;
             RectangleF connection_area = RectangleF.Empty;
             RectangleF MineMapArea = MineMap.GetClientRect();
-
+            float reducedWidth = ((100 - Settings.ShowRadiusPercentage.Value) * MineMapArea.Width)/200;
+            float reduceHeight = ((100 - Settings.ShowRadiusPercentage.Value) * MineMapArea.Height)/200;
+            MineMapArea.Inflate(0 - reducedWidth, 0 - reduceHeight);
             foreach (var zone in MineMap.GridElement.Children)
             {
                 foreach (var block in zone.Children)

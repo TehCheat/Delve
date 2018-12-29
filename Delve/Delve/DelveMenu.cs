@@ -111,6 +111,8 @@ namespace Delve
                 Settings.DelveMineMapConnections.Value = ImGuiExtension.Checkbox($"Show Connections###{idPop}", Settings.DelveMineMapConnections.Value);
                 ImGui.PopID();
                 idPop++;
+                Settings.ShowRadiusPercentage.Value = ImGuiExtension.IntSlider($"Radius (%)##{idPop}", Settings.ShowRadiusPercentage);
+                idPop++;
                 ImGui.TreePop();
             }
 
