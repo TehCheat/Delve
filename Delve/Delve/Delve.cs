@@ -37,7 +37,10 @@ namespace Delve
 
 		public string PoeHudImageLocation;
 
-		public FossilTiers FossilList = new FossilTiers();
+        private string AreaName;
+        private bool IsAzuriteMine => AreaName == "Azurite Mine" ? true : false;
+
+        public FossilTiers FossilList = new FossilTiers();
 		public LargeMapData LargeMapInformation { get; set; }
 
 		public override void Initialise()
@@ -50,7 +53,8 @@ namespace Delve
 			PoeHudImageLocation = PluginDirectory + @"\..\..\textures\";
 			CustomImagePath = PluginDirectory + @"\Resources\";
 
-			GameController.Area.OnAreaChange += area => AreaChange();
+			GameController.Area.OnAreaChange += AreaChange;
+            AreaName = GameController.Area.CurrentArea.Name;
 
             if (File.Exists($@"{PluginDirectory}\Fossil_Tiers.json"))
             {
@@ -72,9 +76,10 @@ namespace Delve
             },
         };
 
-        private void AreaChange()
+        private void AreaChange(AreaController area)
 		{
 			DelveEntities.Clear();
+            AreaName = area.CurrentArea.Name;
 		}
 
 		private void DrawData(string icon, string data)
@@ -101,75 +106,14 @@ namespace Delve
 			DrawRect.X += DrawRect.Width + 1;
 		}
 
-		private void RenderDelveHelpers()
-		{
-			DrawRect = new RectangleF(Settings.PosX, Settings.PosY, 70, 30);
-
-			var playerStats = GameController.Player.GetComponent<Stats>().StatDictionary;
-
-			int iDelveSulphiteCapacityID = GameController.Instance.Files.Stats.records["delve_sulphite_capacity"].ID;
-
-			if (!playerStats.ContainsKey(iDelveSulphiteCapacityID))
-			{
-				return;
-			}
-			var sc = playerStats[iDelveSulphiteCapacityID];
-
-			DrawData("Resources/Sulphite.png", GameController.Game.IngameState.ServerData.CurrentSulphiteAmount + "/" + sc);
-			DrawData("Resources/Azurite.png", GameController.Game.IngameState.ServerData.CurrentAzuriteAmount.ToString());
-
-			var buff = GameController.Player.GetComponent<Life>().Buffs.FirstOrDefault(x => x.Name == "delve_degen_buff");
-			//if(buff != null)
-			DrawData("Resources/Buff.png", buff == null ? "-" : buff.Charges.ToString());
-		}
-
 		public override void Render()
 		{
 			base.Render();
-			if (!Settings.Enable) return;
-			DelveMapNodes();
+            if (!Settings.Enable || !IsAzuriteMine) return;
+            if (Settings.DelveMineMapConnections.Value) DrawMineMapConnections();
 			RenderMapImages();
-			if (Settings.DelveHelpers)
-			{
-				RenderDelveHelpers();
-			}
 		}
-
-		private void DelveMapNodes()
-		{
-			if (!Settings.DelveGridMap) return;
-			var delveMap = GameController.Game.IngameState.UIRoot.Children[1].Children[59];
-			if (!delveMap.IsVisible) return;
-			try
-			{
-				var largeGridList = delveMap.Children[0].Children[0].Children[2].Children.ToList();
-				var scale = delveMap.Children[0].Children[0].Children[2].Scale;
-				CurrentDelveMapZoom = scale;
-
-				if (scale != Settings.DelveGridMapScale) return;
-				//LogMessage($"Count: {largeGrids.Count}", 5);
-				for (var i = 0; i < largeGridList.Count; i++)
-				{
-					var largeGrid = largeGridList[i];
-
-					if (!largeGrid.GetClientRect().Intersects(delveMap.GetClientRect())) continue;
-
-					var smallGridList = largeGrid.Children.ToList();
-					for (var j = 0; j < smallGridList.Count - 1; j++)
-					{
-						var smallGrid = smallGridList[j];
-
-						if (smallGrid.GetClientRect().Intersects(delveMap.GetClientRect()))
-							Graphics.DrawFrame(smallGrid.GetClientRect(), 1, Color.DarkGray);
-					}
-				}
-			}
-			catch
-			{
-
-			}
-		}
-
+        
 		public class LargeMapData
 		{
 			public Camera @Camera { get; set; }
@@ -1111,6 +1055,9 @@ namespace Delve
 
 		public override void EntityAdded(EntityWrapper entityWrapper)
 		{
+            if (!IsAzuriteMine)
+                return;
+
 			if (entityWrapper.HasComponent<Chest>()
 				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall")
 				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight")
@@ -1121,6 +1068,9 @@ namespace Delve
 		}
 		public override void EntityRemoved(EntityWrapper entityWrapper)
 		{
+            if (!IsAzuriteMine)
+                return;
+
 			if (DelveEntities.Contains(entityWrapper))
 			{
 				DelveEntities.Remove(entityWrapper);
@@ -1141,12 +1091,10 @@ namespace Delve
 
 		private void RenderMapImages()
 		{
-			var Area = GameController.Game.IngameState.Data.CurrentArea;
-			if (Area.IsTown || Area.RawName.Contains("Hideout")) return;
 			if (GameController.Game.IngameState.IngameUi.Map.LargeMap.IsVisible)
 			{
 				LargeMapInformation = new LargeMapData(GameController);
-				foreach (var entity in DelveEntities)
+				foreach (var entity in DelveEntities.ToArray())
 				{
 					if (entity is null) continue;
 					DrawToLargeMiniMap(entity);
@@ -1154,12 +1102,36 @@ namespace Delve
 			}
 			else if (GameController.Game.IngameState.IngameUi.Map.SmallMinimap.IsVisible)
 			{
-				foreach (var entity in DelveEntities)
+				foreach (var entity in DelveEntities.ToArray())
 				{
 					if (entity is null) continue;
 					DrawToSmallMiniMap(entity);
 				}
 			}
 		}
+
+        private void DrawMineMapConnections()
+        {
+            var MineMap = GameController.Game.IngameState.IngameUi.MineMap;
+            if (!MineMap.IsVisible)
+                return;
+
+            int width = 0;
+            RectangleF connection_area = RectangleF.Empty;
+            RectangleF MineMapArea = MineMap.GetClientRect();
+
+            foreach (var zone in MineMap.GridElement.Children)
+            {
+                foreach (var block in zone.Children)
+                {
+                    foreach (var connection in block.Children)
+                    {
+                        width = (int)connection.Width;
+                        if((width == 10 || width == 4) && MineMapArea.Intersects(connection.GetClientRect()))
+                            Graphics.DrawFrame(connection.GetClientRect(), 1, Color.Yellow);
+                    }
+                }
+            }
+        }
 	}
 }

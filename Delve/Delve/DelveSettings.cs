@@ -57,13 +57,7 @@ namespace Delve
 		public RangeNode<int> DelvePathwayChestSize { get; set; } = new RangeNode<int>(15, 1, 200);
 		public ColorNode DelvePathwayChestColor { get; set; } = new ColorBGRA(0, 131, 0, 255);
 
-		// Delve Map Grid
-		public ToggleNode DelveGridMap { get; set; } = true;
-		public float DelveGridMapScale { get; set; } = 0.635625f;
-
-		// Delve Helpers
-		public ToggleNode DelveHelpers { get; set; } = true;
-		public RangeNode<int> PosX { get; set; } = new RangeNode<int>(551, 0, 1500);
-		public RangeNode<int> PosY { get; set; } = new RangeNode<int>(0, 0, 1500);
+        // Delve Mine Map Connections
+        public ToggleNode DelveMineMapConnections { get; set; } = true;
 	}
 }

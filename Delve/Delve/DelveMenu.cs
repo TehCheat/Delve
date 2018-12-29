@@ -13,21 +13,6 @@ namespace Delve
 		public void DelveMenu(int idIn, out int idPop)
 		{
 			idPop = idIn;
-			if (ImGui.TreeNode("Delve Map Grid - Shown only when fully zoomed in"))
-			{
-				ImGui.PushID(idPop);
-				Settings.DelveGridMap.Value = ImGuiExtension.Checkbox(Settings.DelveGridMap.Value ? "Show" : "Hidden", Settings.DelveGridMap);
-				ImGui.PopID();
-				idPop++;
-				ImGui.PushID(idPop);
-				if (ImGui.Button("Set current Delve Zoom as the zoom you want to show grid\r\nZoom in all the way then press the button"))
-				{
-					Settings.DelveGridMapScale = CurrentDelveMapZoom;
-				}
-				ImGui.PopID();
-				idPop++;
-				ImGui.TreePop();
-			}
 			if (ImGui.TreeNode("Delve Path's"))
 			{
 				ImGui.PushID(idPop);
@@ -120,23 +105,15 @@ namespace Delve
 				ImGui.Spacing();
 				ImGui.TreePop();
 			}
-			if (ImGui.TreeNode("Delve Helpers"))
-			{
-				ImGui.PushID(idPop);
-				Settings.DelveHelpers.Value = ImGuiExtension.Checkbox(Settings.DelveHelpers.Value ? "Show" : "Hidden", Settings.DelveHelpers);
-				ImGui.PopID();
-				idPop++;
-				ImGui.Spacing();
-				ImGui.PushID(idPop);
-				Settings.PosX.Value = ImGuiExtension.IntSlider($"Position X##{idPop}", Settings.PosX);
-				ImGui.PopID();
-				idPop++;
-				ImGui.PushID(idPop);
-				Settings.PosY.Value = ImGuiExtension.IntSlider($"Position Y##{idPop}", Settings.PosY);
-				ImGui.PopID();
-				idPop++;
-				ImGui.TreePop();
-			}
+            if(ImGui.TreeNode("Delve Mine Map Stuff"))
+            {
+                ImGui.PushID(idPop);
+                Settings.DelveMineMapConnections.Value = ImGuiExtension.Checkbox($"Show Connections###{idPop}", Settings.DelveMineMapConnections.Value);
+                ImGui.PopID();
+                idPop++;
+                ImGui.TreePop();
+            }
+
 		}
 	
 		public override void DrawSettingsMenu()
@@ -151,6 +128,7 @@ namespace Delve
 				DelveMenu(idPop, out var newInt);
 				idPop = newInt;
 			}
+            ImGui.EndChild();
 		}
 	}
 }
