@@ -249,7 +249,7 @@ namespace Delve
 		{
 			if (Settings.DelvePathWays)
 			{
-				if (e.Path.EndsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight"))
+				if (e.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight"))
 				{
 					return new MapIcon(e, new HudTexture(CustomImagePath + "abyss-crack.png", Settings.DelvePathWaysNodeColor), () => true,
 							Settings.DelvePathWaysNodeSize);
@@ -1111,7 +1111,10 @@ namespace Delve
 
 		public override void EntityAdded(EntityWrapper entityWrapper)
 		{
-			if (entityWrapper.HasComponent<Chest>() || entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall"))
+			if (entityWrapper.HasComponent<Chest>()
+				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall")
+				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight")
+			)
 			{
 				DelveEntities.Add(entityWrapper);
 			}
