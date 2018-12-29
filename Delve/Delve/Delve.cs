@@ -15,6 +15,7 @@ using PoeHUD.Models;
 using PoeHUD.Plugins;
 using PoeHUD.Poe.Components;
 using PoeHUD.Poe.RemoteMemoryObjects;
+using PoeHUD.Poe.Elements;
 
 namespace Delve
 {
@@ -110,8 +111,9 @@ namespace Delve
 		{
 			base.Render();
             if (!Settings.Enable || !IsAzuriteMine) return;
-            if (Settings.DelveMineMapConnections.Value) DrawMineMapConnections();
-			RenderMapImages();
+            SubterraneanChart MineMap = GameController.Game.IngameState.IngameUi.MineMap;
+            if (Settings.DelveMineMapConnections.Value) DrawMineMapConnections(MineMap);
+            if(!MineMap.IsVisible) RenderMapImages();
 		}
         
 		public class LargeMapData
@@ -1110,9 +1112,8 @@ namespace Delve
 			}
 		}
 
-        private void DrawMineMapConnections()
+        private void DrawMineMapConnections(SubterraneanChart MineMap)
         {
-            var MineMap = GameController.Game.IngameState.IngameUi.MineMap;
             if (!MineMap.IsVisible)
                 return;
 
