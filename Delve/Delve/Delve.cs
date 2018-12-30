@@ -131,7 +131,7 @@ namespace Delve
                 }
             }
 		}
-        
+
 		public class LargeMapData
 		{
 			public Camera @Camera { get; set; }
