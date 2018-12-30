@@ -460,7 +460,7 @@ namespace Delve
 						)
 					{
 						return new MapIcon(e,
-							new HudTexture(PoeHudImageLocation + "strongbox.png", Settings.DelvePathwayChestColor),
+							new HudTexture(PoeHudImageLocation + "rare-amulet.png", Settings.DelvePathwayChestColor),
 							() => true,
 							Settings.DelvePathwayChestSize);
 					}
