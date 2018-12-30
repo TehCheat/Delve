@@ -125,8 +125,8 @@ namespace Delve
                     var TextToDisplay = entity.Path.Replace("Metadata/Chests/DelveChests/", "");
                     var textBox = Graphics.MeasureText(TextToDisplay, 0, FontDrawFlags.Center);
                     var screenPosition = GameController.Game.IngameState.Camera.WorldToScreen(entity.Pos, entity);
-                    Graphics.DrawBox(new RectangleF(screenPosition.X, screenPosition.Y, textBox.Width, textBox.Height), Color.Black);
-                    Graphics.DrawText(TextToDisplay, 0, screenPosition, Color.White, FontDrawFlags.Center);
+                    Graphics.DrawBox(new RectangleF(screenPosition.X - textBox.Width/2, screenPosition.Y - textBox.Height/2, textBox.Width, textBox.Height * 2), Color.White);
+                    Graphics.DrawText(TextToDisplay, 0, screenPosition, Color.Black, FontDrawFlags.Center);
                 }
             }
 		}
