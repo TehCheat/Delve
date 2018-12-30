@@ -115,6 +115,7 @@ namespace Delve
                 idPop++;
                 ImGui.TreePop();
             }
+            Settings.DebugHotkey.Value = ImGuiExtension.HotkeySelector($"Debug Mode Hotkey", Settings.DebugHotkey.Value);
 
 		}
 	

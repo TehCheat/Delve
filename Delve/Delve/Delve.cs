@@ -21,6 +21,7 @@ namespace Delve
 {
     public partial class Delve : BaseSettingsPlugin<DelveSettings>
     {
+        private bool debugMode = false;
 		private RectangleF DrawRect;
 	
 		public float CurrentDelveMapZoom = 0.635625f;
@@ -113,6 +114,21 @@ namespace Delve
             SubterraneanChart MineMap = GameController.Game.IngameState.IngameUi.MineMap;
             if (Settings.DelveMineMapConnections.Value) DrawMineMapConnections(MineMap);
             if(!MineMap.IsVisible) RenderMapImages();
+            if (Settings.DebugHotkey.PressedOnce())
+                debugMode = !debugMode;
+            if (debugMode)
+            {
+                foreach (var entity in DelveEntities.ToArray())
+                {
+                    if (entity.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall") || entity.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight"))
+                        continue;
+                    var TextToDisplay = entity.Path.Replace("Metadata/Chests/DelveChests/", "");
+                    var textBox = Graphics.MeasureText(TextToDisplay, 0, FontDrawFlags.Center);
+                    var screenPosition = GameController.Game.IngameState.Camera.WorldToScreen(entity.Pos, entity);
+                    Graphics.DrawBox(new RectangleF(screenPosition.X, screenPosition.Y, textBox.Width, textBox.Height), Color.Black);
+                    Graphics.DrawText(TextToDisplay, 0, screenPosition, Color.White, FontDrawFlags.Center);
+                }
+            }
 		}
         
 		public class LargeMapData

@@ -60,5 +60,7 @@ namespace Delve
         // Delve Mine Map Connections
         public ToggleNode DelveMineMapConnections { get; set; } = true;
         public RangeNode<int> ShowRadiusPercentage { get; set; } = new RangeNode<int>(80, 0, 100);
+
+        public HotkeyNode DebugHotkey { get; set; } = new HotkeyNode(System.Windows.Forms.Keys.Menu);
 	}
 }
