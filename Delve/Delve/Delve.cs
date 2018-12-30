@@ -21,7 +21,6 @@ namespace Delve
 {
     public partial class Delve : BaseSettingsPlugin<DelveSettings>
     {
-        private bool debugMode = false;
 		private RectangleF DrawRect;
 	
 		public float CurrentDelveMapZoom = 0.635625f;
@@ -115,18 +114,20 @@ namespace Delve
             if (Settings.DelveMineMapConnections.Value) DrawMineMapConnections(MineMap);
             if(!MineMap.IsVisible) RenderMapImages();
             if (Settings.DebugHotkey.PressedOnce())
-                debugMode = !debugMode;
-            if (debugMode)
+                Settings.DebugMode.Value = !Settings.DebugMode.Value;
+            if (Settings.DebugMode.Value)
             {
                 foreach (var entity in DelveEntities.ToArray())
                 {
                     if (entity.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall") || entity.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight"))
                         continue;
+                    if (Settings.ShouldHideOnOpen.Value && entity.GetComponent<Chest>().IsOpened)
+                        continue;
                     var TextToDisplay = entity.Path.Replace("Metadata/Chests/DelveChests/", "");
                     var textBox = Graphics.MeasureText(TextToDisplay, 0, FontDrawFlags.Center);
                     var screenPosition = GameController.Game.IngameState.Camera.WorldToScreen(entity.Pos, entity);
-                    Graphics.DrawBox(new RectangleF(screenPosition.X - textBox.Width/2, screenPosition.Y - textBox.Height/2, textBox.Width, textBox.Height * 2), Color.White);
-                    Graphics.DrawText(TextToDisplay, 0, screenPosition, Color.Black, FontDrawFlags.Center);
+                    Graphics.DrawBox(new RectangleF((screenPosition.X - textBox.Width/2) - 10, screenPosition.Y - textBox.Height/2, textBox.Width + 20, textBox.Height * 2), Color.White);
+                    Graphics.DrawText(TextToDisplay, 20, screenPosition, Color.Black, FontDrawFlags.Center);
                 }
             }
 		}

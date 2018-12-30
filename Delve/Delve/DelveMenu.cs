@@ -115,7 +115,19 @@ namespace Delve
                 idPop++;
                 ImGui.TreePop();
             }
-            Settings.DebugHotkey.Value = ImGuiExtension.HotkeySelector($"Debug Mode Hotkey", Settings.DebugHotkey.Value);
+            if(ImGui.TreeNode("Debug Mode"))
+            {
+                ImGui.PushID(idPop);
+                Settings.DebugHotkey.Value = ImGuiExtension.HotkeySelector($"Debug Mode Hotkey", Settings.DebugHotkey.Value);
+                ImGui.PopID();
+                idPop++;
+                Settings.DebugMode.Value = ImGuiExtension.Checkbox($"Debug Mode##{idPop}", Settings.DebugMode);
+                idPop++;
+                Settings.ShouldHideOnOpen.Value = ImGuiExtension.Checkbox($"Hide Chest Name When Opened##{idPop}", Settings.ShouldHideOnOpen);
+                idPop++;
+                ImGui.TreePop();
+            }
+
 
 		}
 	
