@@ -1075,7 +1075,7 @@ namespace Delve
             if (!IsAzuriteMine)
                 return;
 
-			if (entityWrapper.HasComponent<Chest>()
+			if ((entityWrapper.HasComponent<Chest>() && entityWrapper.Path.StartsWith("Metadata/Chests/DelveChests/"))
 				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveWall")
 				|| entityWrapper.Path.StartsWith("Metadata/Terrain/Leagues/Delve/Objects/DelveLight")
 			)
