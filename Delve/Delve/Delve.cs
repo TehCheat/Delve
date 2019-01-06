@@ -294,6 +294,9 @@ namespace Delve
                         else if (tempPath.Contains("DelveChestCurrencyVaal"))
                             return new MapIcon(e, new HudTexture(CustomImagePath + "Corrupted.png", Settings.DelveCurrencyChestColor),
                                 () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
+                        else if (tempPath.Contains("DelveChestCurrencySockets"))
+                            return new MapIcon(e, new HudTexture(CustomImagePath + "AdditionalSockets.png", Settings.DelveCurrencyChestColor),
+                                () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
                     }
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/DelveChestArmourBody2AdditionalSockets"))
@@ -320,10 +323,6 @@ namespace Delve
                         return new MapIcon(e, new HudTexture(CustomImagePath + "Essence.png", Settings.DelveCurrencyChestColor),
                             () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
                     }
-
-
-
-
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/DelveChestGenericDivination")
                         || e.Path.StartsWith("Metadata/Chests/DelveChests/DelveChestArmourDivination")
