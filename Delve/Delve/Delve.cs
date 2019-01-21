@@ -244,7 +244,6 @@ namespace Delve
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/OffPathCurrency")
                         || e.Path.StartsWith("Metadata/Chests/DelveChests/PathCurrency")
-                        || e.Path.StartsWith("Metadata/Chests/DelveChests/DelveChestCurrencySockets")
                         || e.Path.StartsWith("Metadata/Chests/DelveChests/DelveChestGenericCurrency"))
                     {
                         return new MapIcon(e, new HudTexture(CustomImagePath + "Currency.png", Settings.DelveCurrencyChestColor),
@@ -270,7 +269,7 @@ namespace Delve
                        )
                     {
                         string tempPath = e.Path.Replace("Metadata/Chests/DelveChests/", "");
-                        if (tempPath.Contains("Currency1") || tempPath.Contains("DynamiteCurrency") || tempPath.Contains("DelveChestCurrencyHighShards"))
+                        if (tempPath.Contains("Currency1") || tempPath == "DynamiteCurrency" || tempPath.Contains("DelveChestCurrencyHighShards"))
                             return new MapIcon(e, new HudTexture(CustomImagePath + "Currency.png", Settings.DelveCurrencyChestColor),
                                 () => Settings.DelveCurrencyChest, Settings.DelveCurrencyChestSize);
                         else if (tempPath.Contains("Currency2"))
