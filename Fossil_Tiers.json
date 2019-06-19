@@ -1,33 +1,37 @@
 {
-  "t1": [
-    "Bloodstained",
-    "Faceted",
-    "Fractured",
-    "Hollow",
-    "Glyphic",
-    "Tangled",
-    "Sanctified"
-  ],
-  "t2": [
-    "Gilded",
-    "Dense",
-    "Prismatic",
-    "Aetheric",
-    "Enchanted",
-    "Metallic",
-    "Pristine",
-    "Encrusted",
-    "Perfect",
-    "Shuddering"
-  ],
-  "t3": [
-    "Bound",
-    "Corroded",
-    "Scorched",
-    "Serrated",
-    "Aberrant",
-    "Frigid",
-    "Jagged",
-    "Lucent"
-  ]
+
+    "t1":[
+        "10c to exalts",
+        "Fractured",
+        "Bloodstained",
+        "Faceted",
+        "Hollow",
+        "Glyphic",
+        "Serrated",
+        "Sanctified",
+        "Perfect"
+    ],
+    "t2":[
+        "less than 10c",
+        "Tangled",
+        "Pristine",
+        "Corroded",
+        "Gilded",
+        "Prismatic",
+        "Enchanted"
+    ],
+    "t3":[
+        "less than 2c",
+        "Dense",
+        "Metallic",
+        "Bound",
+        "Aetheric",
+        "Encrusted",
+        "Jagged",
+        "Scorched",
+        "Frigid",
+        "Aberrant",
+        "Lucent"
+    ]
+
 }
