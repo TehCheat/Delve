@@ -335,13 +335,31 @@ namespace Delve
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/DelveAzuriteVein"))
                     {
-                        if (e.Path.EndsWith("1_3") || e.Path.EndsWith("2_1"))
+                        int size = Settings.DelveAzuriteVeinChestSize;
+                        string AzuriteImage = ""; // this will only draw if the path end matches below
+                        if (e.Path.EndsWith("1_1")) // Smallest
                         {
-                            return new MapIcon(e, new HudTexture(CustomImagePath + "AzuriteT3.png", Settings.DelveAzuriteVeinChestColor),
-                                () => Settings.DelveAzuriteVeinChest, Settings.DelveAzuriteVeinChestSize);
+                            AzuriteImage = "AzuriteT3.png";
                         }
-                        return new MapIcon(e, new HudTexture(CustomImagePath + "AzuriteT1.png", Settings.DelveAzuriteVeinChestColor),
-                            () => Settings.DelveAzuriteVeinChest, Settings.DelveAzuriteVeinChestSize);
+                        else if (e.Path.EndsWith("1_2")) // Medium
+                        {
+                            AzuriteImage = "AzuriteT3.png";
+                        }
+                        else if (e.Path.EndsWith("1_3")) // Large
+                        {
+                            AzuriteImage = "AzuriteT2.png";
+                            size *= 2;
+                        }
+                        else if (e.Path.EndsWith("2_1")) // Huge
+                        {
+                            AzuriteImage = "AzuriteT1.png";
+                            size *= 2;
+                        }
+                        if (AzuriteImage != "")
+                        {
+                            return new MapIcon(e, new HudTexture(CustomImagePath + AzuriteImage, Settings.DelveAzuriteVeinChestColor),
+                                () => Settings.DelveAzuriteVeinChest, size);
+                        }
                     }
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/Resonator3")
