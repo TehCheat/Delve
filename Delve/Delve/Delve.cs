@@ -335,11 +335,13 @@ namespace Delve
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/DelveAzuriteVein"))
                     {
-                        int size = Settings.DelveAzuriteVeinChestSize;
                         if (e.Path.EndsWith("1_3") || e.Path.EndsWith("2_1"))
-                            size *= 2;
-                        return new MapIcon(e, new HudTexture(PoeHudImageLocation + "strongbox.png", Settings.DelveAzuriteVeinChestColor),
-                            () => Settings.DelveAzuriteVeinChest, size);
+                        {
+                            return new MapIcon(e, new HudTexture(CustomImagePath + "AzuriteT3.png", Settings.DelveAzuriteVeinChestColor),
+                                () => Settings.DelveAzuriteVeinChest, Settings.DelveAzuriteVeinChestSize);
+                        }
+                        return new MapIcon(e, new HudTexture(CustomImagePath + "AzuriteT1.png", Settings.DelveAzuriteVeinChestColor),
+                            () => Settings.DelveAzuriteVeinChest, Settings.DelveAzuriteVeinChestSize);
                     }
 
                     if (e.Path.StartsWith("Metadata/Chests/DelveChests/Resonator3")
